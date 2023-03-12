@@ -12,7 +12,12 @@
     }
 
     function getPlayerChoice() {
-        return prompt('Choose either rock, paper or scissors').toLowerCase();
+        input = prompt('Choose either rock, paper or scissors');
+        if (input) {
+            return input.toLowerCase();
+        } else {
+            return '';
+        }
     }
 
     function isDraw(computerSelection, playerSelection) {
@@ -31,12 +36,17 @@
     }
 
     function printScores(computerScore, playerScore) {
-        console.log(`${playerScore} points for player and ${computerScore} points for PC`);
+        console.log(`${playerScore} - player, ${computerScore} - PC`);
     }
 
     function playRound() {
         let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice();
+
+        if (playerSelection === '') {
+            console.log('You refused to choose an action');
+            return null;
+        }
 
         if (CHOICES.includes(playerSelection)) {
             if (isDraw(computerSelection, playerSelection)) {
@@ -64,8 +74,6 @@
         } else {
             console.log('Player won this game!');
         }
-
-        printScores(computerScore, playerScore);
 
     }
 
