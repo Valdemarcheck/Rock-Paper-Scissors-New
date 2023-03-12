@@ -2,7 +2,7 @@
 
     const CHOICES = ['rock', 'paper', 'scissors']
 
-    function capitilize(string) {
+    function capitalize(string) {
         return string[0].toUpperCase() + string.slice(1);
     }
 
@@ -43,10 +43,10 @@
                 console.log("It's a draw!");
                 return null;
             } else if (getWinner(computerSelection, playerSelection) === 'player') {
-                console.log(`You won! ${capitilize(playerSelection)} beats ${computerSelection}`);
+                console.log(`You won! ${capitalize(playerSelection)} beats ${computerSelection}`);
                 return 'player';
             } else {
-                console.log(`You lose! ${capitilize(computerSelection)} beats ${playerSelection}`);
+                console.log(`You lose! ${capitalize(computerSelection)} beats ${playerSelection}`);
                 return 'computer';
             }
         } else {
