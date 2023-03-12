@@ -26,6 +26,10 @@
         }
     }
 
+    function printScores(playerScore, computerScore) {
+        console.log(`${playerScore} points for player and ${computerScore} points for PC`);
+    }
+
     function playRound() {
         let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice();
@@ -62,6 +66,8 @@
                     computerScore++;
                 }
             }
+
+            printScores(playerScore, computerScore);
 
         }
     }
