@@ -33,20 +33,39 @@
         if (CHOICES.includes(playerSelection)) {
             if (isDraw(computerSelection, playerSelection)) {
                 console.log("It's a draw!");
+                return null;
             } else if (getWinner(computerSelection, playerSelection) === 'player') {
                 console.log(`You won! ${playerSelection} beats ${computerSelection}`);
+                return 'player';
             } else {
                 console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+                return 'computer';
             }
         } else {
             console.log("You've entered an unknown action. Please input either rock, paper or scissors");
+            return null;
         }
     }
 
     function game() {
+
+        let playerScore = computerScore = 0;
+
         for (let i = 0; i < 5; i++) {
-            playRound();
+
+            let winner = playRound();
+
+            if (winner != null) {
+                if (winner === 'player') {
+                    playerScore++;
+                } else {
+                    computerScore++;
+                }
+            }
+
         }
     }
+
+    game();
 
 </script>
