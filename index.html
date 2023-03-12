@@ -11,4 +11,19 @@
         return prompt('Choose either rock, paper or scissors').toLowerCase();
     }
 
+    function playRound() {
+        let computerSelection = getComputerChoice();
+        let playerSelection = getPlayerChoice();
+
+        if (CHOICES.includes(playerSelection)) {
+            if (getWinner(computerSelection, playerSelection) === 'player') {
+                console.log(`You won! ${playerSelection} beats ${computerSelection}`);
+            } else {
+                console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+            }
+        } else {
+            console.log("You've entered an unknown action. Please input either rock, paper or scissors");
+        }
+    }
+
 </script>
