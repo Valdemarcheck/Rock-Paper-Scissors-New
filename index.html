@@ -2,6 +2,10 @@
 
     const CHOICES = ['rock', 'paper', 'scissors']
 
+    function capitilize(string) {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
     function getComputerChoice() {
         let randomIndex = Math.floor(Math.random() * 3);
         return CHOICES[randomIndex];
@@ -39,16 +43,30 @@
                 console.log("It's a draw!");
                 return null;
             } else if (getWinner(computerSelection, playerSelection) === 'player') {
-                console.log(`You won! ${playerSelection} beats ${computerSelection}`);
+                console.log(`You won! ${capitilize(playerSelection)} beats ${computerSelection}`);
                 return 'player';
             } else {
-                console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+                console.log(`You lose! ${capitilize(computerSelection)} beats ${playerSelection}`);
                 return 'computer';
             }
         } else {
             console.log("You've entered an unknown action. Please input either rock, paper or scissors");
             return null;
         }
+    }
+
+    function announceFinalWinner(computerScore, playerScore) {
+
+        if (computerScore === playerScore) {
+            console.log('Nobody won this game!');
+        } else if (computerScore > playerScore) {
+            console.log('PC won this game!');
+        } else {
+            console.log('Player won this game!');
+        }
+
+        printScores(computerScore, playerScore);
+
     }
 
     function game() {
@@ -70,6 +88,8 @@
             printScores(computerScore, playerScore);
 
         }
+
+        announceFinalWinner(computerScore, playerScore);
 
     }
 
