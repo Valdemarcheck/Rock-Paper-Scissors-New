@@ -22,11 +22,11 @@
     function getWinner(computerSelection, playerSelection) {
         switch (playerSelection) {
             case 'rock':
-                return (computerSelection == 'paper') ? 'computer' : 'player';
+                return (computerSelection === 'paper') ? 'computer' : 'player';
             case 'paper':
-                return (computerSelection == 'scissors') ? 'computer' : 'player';
+                return (computerSelection === 'scissors') ? 'computer' : 'player';
             case 'scissors':
-                return (computerSelection == 'rock') ? 'computer' : 'player';
+                return (computerSelection === 'rock') ? 'computer' : 'player';
         }
     }
 
@@ -77,7 +77,7 @@
 
             let winner = playRound();
 
-            if (winner != null) {
+            if (winner !== null) {
                 if (winner === 'player') {
                     playerScore++;
                 } else {
