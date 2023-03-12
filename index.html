@@ -11,12 +11,29 @@
         return prompt('Choose either rock, paper or scissors').toLowerCase();
     }
 
+    function isDraw(computerSelection, playerSelection) {
+        return computerSelection === playerSelection;
+    }
+
+    function getWinner(computerSelection, playerSelection) {
+        switch (playerSelection) {
+            case 'rock':
+                return (computerSelection == 'paper') ? 'computer' : 'player';
+            case 'paper':
+                return (computerSelection == 'scissors') ? 'computer' : 'player';
+            case 'scissors':
+                return (computerSelection == 'rock') ? 'computer' : 'player';
+        }
+    }
+
     function playRound() {
         let computerSelection = getComputerChoice();
         let playerSelection = getPlayerChoice();
 
         if (CHOICES.includes(playerSelection)) {
-            if (getWinner(computerSelection, playerSelection) === 'player') {
+            if (isDraw(computerSelection, playerSelection)) {
+                console.log("It's a draw!");
+            } else if (getWinner(computerSelection, playerSelection) === 'player') {
                 console.log(`You won! ${playerSelection} beats ${computerSelection}`);
             } else {
                 console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
