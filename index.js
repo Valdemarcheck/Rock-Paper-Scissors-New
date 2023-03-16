@@ -1,26 +1,28 @@
+const POSSIBLE_ACTIONS = ["rock", "paper", "scissors"];
 const buttons = document.querySelectorAll(".button");
 
 buttons.forEach((button) =>
-  button.addEventListener("click", getPlayerAction, true)
+  button.addEventListener("click", getPlayerChoice, true)
 );
-
-function getPlayerAction(e) {
-  let className = this.classList.value;
-
-  if (className === "button") {
-    e.stopPropagation();
-    let choice = this.getAttribute("data-action");
-    console.log(choice);
-  }
-}
 
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
+function getPlayerChoice() {
+  let className = this.classList.value;
+  let choice;
+
+  if (className === "button") {
+    choice = this.getAttribute("data-action");
+    console.log(choice);
+    playRound(choice);
+  }
+}
+
 function getComputerChoice() {
   let randomIndex = Math.floor(Math.random() * 3);
-  return CHOICES[randomIndex];
+  return POSSIBLE_ACTIONS[randomIndex];
 }
 
 // function getPlayerChoice() {
@@ -51,16 +53,10 @@ function printScores(computerScore, playerScore) {
   console.log(`${playerScore} - player, ${computerScore} - PC`);
 }
 
-function playRound() {
+function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
-  let playerSelection = getPlayerChoice();
 
-  if (playerSelection === "") {
-    console.log("You refused to choose an action");
-    return null;
-  }
-
-  if (CHOICES.includes(playerSelection)) {
+  if (POSSIBLE_ACTIONS.includes(playerSelection)) {
     if (isDraw(computerSelection, playerSelection)) {
       console.log("It's a draw!");
       return null;
@@ -112,5 +108,3 @@ function announceFinalWinner(computerScore, playerScore) {
 
 //   announceFinalWinner(computerScore, playerScore);
 // }
-
-game();
