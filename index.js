@@ -1,5 +1,18 @@
-const CHOICES = ["rock", "paper", "scissors"];
-const buttons = document.querySelector(".buttons");
+const buttons = document.querySelectorAll(".button");
+
+buttons.forEach((button) =>
+  button.addEventListener("click", getPlayerAction, true)
+);
+
+function getPlayerAction(e) {
+  let className = this.classList.value;
+
+  if (className === "button") {
+    e.stopPropagation();
+    let choice = this.getAttribute("data-action");
+    console.log(choice);
+  }
+}
 
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
@@ -10,14 +23,14 @@ function getComputerChoice() {
   return CHOICES[randomIndex];
 }
 
-function getPlayerChoice() {
-  input = prompt("Choose either rock, paper or scissors");
-  if (input) {
-    return input.toLowerCase();
-  } else {
-    return "";
-  }
-}
+// function getPlayerChoice() {
+//   input = prompt("Choose either rock, paper or scissors");
+//   if (input) {
+//     return input.toLowerCase();
+//   } else {
+//     return "";
+//   }
+// }
 
 function isDraw(computerSelection, playerSelection) {
   return computerSelection === playerSelection;

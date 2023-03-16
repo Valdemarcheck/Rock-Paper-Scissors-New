@@ -9,7 +9,7 @@
 
 h1 {
   font-size: 3rem;
-  color:rgb(240, 240, 240);
+  color: rgb(240, 240, 240);
 }
 
 h2,
@@ -80,7 +80,12 @@ h2,
   min-height: 24rem;
   border-radius: 10px;
   box-shadow: 0 0 10px #363646;
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+img {
+  user-select: none;
 }
