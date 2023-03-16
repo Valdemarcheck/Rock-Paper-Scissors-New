@@ -94,7 +94,7 @@ function playRound(playerSelection) {
   rounds_played++;
   printScores(computerScore, playerScore);
 
-  if (rounds_played === 5) {
+  if (computerScore === 5 || playerScore === 5) {
     announceFinalWinner();
     gameHasEnded = true;
     retryBtn.style.display = "block";
