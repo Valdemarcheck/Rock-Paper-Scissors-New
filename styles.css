@@ -3,18 +3,22 @@
   padding: 0;
   margin: 0;
   font-size: 12px;
+  color: #1d1d21;
+  font-family: "Tilt Neon", cursive;
 }
 
 h1 {
   font-size: 3rem;
+  color:rgb(240, 240, 240);
 }
 
-h2 {
-  font-size: 2rem;
+h2,
+.output {
+  font-size: 2.5rem;
 }
 
 .output {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 body {
@@ -30,8 +34,7 @@ body > * {
 header,
 footer {
   height: 100px;
-  background-color: #292931;
-  color: rgb(240, 240, 240);
+  background-color: #1c1c26;
 
   display: flex;
   justify-content: center;
@@ -76,7 +79,7 @@ h2,
   min-width: 16rem;
   min-height: 24rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px #292931;
+  box-shadow: 0 0 10px #363646;
   display: flex;
   justify-content: center;
   align-items: center;
