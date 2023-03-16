@@ -91,3 +91,24 @@ main > * {
 img {
   user-select: none;
 }
+
+.retry-btn {
+    max-width: 16rem;
+    height: 5rem;
+
+    background-color: #363646;
+    color:rgb(240, 240, 240);
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    transition: scale ease 0.1s;
+}
+
+.retry-btn:hover {
+    background-color: #1c1c26;
+}
+
+.retry-btn:active {
+    transition: scale ease 0.1s;
+    scale: 0.95;
+}
