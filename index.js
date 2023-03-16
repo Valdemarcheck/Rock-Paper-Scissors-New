@@ -18,35 +18,16 @@ buttons.forEach((button) =>
   button.addEventListener("click", getPlayerChoice, true)
 );
 
-function startNewGame() {
-  playerScore = computerScore = 0;
-  rounds_played = 0;
-  gameHasEnded = false;
-  score.textContent = "0 - player, 0 - PC";
-  round.textContent = "Round: 1";
-  retryBtn.style.display = "none";
-}
-
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
 }
 
-function getPlayerChoice() {
-  if (!gameHasEnded) {
-    let className = this.classList.value;
-    let choice;
-
-    if (className === "button") {
-      choice = this.getAttribute("data-action");
-      console.log(choice);
-      playRound(choice);
-    }
-  }
+function printScores(computerScore, playerScore) {
+  score.textContent = `${playerScore} - player, ${computerScore} - PC`;
 }
 
-function getComputerChoice() {
-  let randomIndex = Math.floor(Math.random() * 3);
-  return POSSIBLE_ACTIONS[randomIndex];
+function updateRoundCounter() {
+  round.textContent = `Round: ${rounds_played}`;
 }
 
 function isDraw(computerSelection, playerSelection) {
@@ -62,14 +43,6 @@ function getWinner(computerSelection, playerSelection) {
     case "scissors":
       return computerSelection === "rock" ? "computer" : "player";
   }
-}
-
-function printScores(computerScore, playerScore) {
-  score.textContent = `${playerScore} - player, ${computerScore} - PC`;
-}
-
-function updateRoundCounter() {
-  round.textContent = `Round: ${rounds_played}`;
 }
 
 function announceRoundWinner(computerSelection, playerSelection) {
@@ -90,6 +63,34 @@ function announceRoundWinner(computerSelection, playerSelection) {
   }
 }
 
+function announceFinalWinner() {
+  if (computerScore === playerScore) {
+    outputPara.textContent = "Nobody won this game!";
+  } else if (computerScore > playerScore) {
+    outputPara.textContent = "PC won this game!";
+  } else {
+    outputPara.textContent = "Player won this game!";
+  }
+}
+
+function getPlayerChoice() {
+  if (!gameHasEnded) {
+    let className = this.classList.value;
+    let choice;
+
+    if (className === "button") {
+      choice = this.getAttribute("data-action");
+      console.log(choice);
+      playRound(choice);
+    }
+  }
+}
+
+function getComputerChoice() {
+  let randomIndex = Math.floor(Math.random() * 3);
+  return POSSIBLE_ACTIONS[randomIndex];
+}
+
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
 
@@ -108,14 +109,13 @@ function playRound(playerSelection) {
   }
 }
 
-function announceFinalWinner() {
-  if (computerScore === playerScore) {
-    outputPara.textContent = "Nobody won this game!";
-  } else if (computerScore > playerScore) {
-    outputPara.textContent = "PC won this game!";
-  } else {
-    outputPara.textContent = "Player won this game!";
-  }
+function startNewGame() {
+  playerScore = computerScore = 0;
+  rounds_played = 0;
+  gameHasEnded = false;
+  score.textContent = "0 - player, 0 - PC";
+  round.textContent = "Round: 1";
+  retryBtn.style.display = "none";
 }
 
 startNewGame();
