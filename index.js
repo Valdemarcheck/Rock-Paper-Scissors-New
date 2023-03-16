@@ -2,6 +2,10 @@ const POSSIBLE_ACTIONS = ["rock", "paper", "scissors"];
 
 const buttons = document.querySelectorAll(".button");
 const outputPara = document.querySelector(".output");
+const score = document.querySelector(".score");
+
+let playerScore = (computerScore = 0);
+let rounds_played = 0;
 
 buttons.forEach((button) =>
   button.addEventListener("click", getPlayerChoice, true)
@@ -27,15 +31,6 @@ function getComputerChoice() {
   return POSSIBLE_ACTIONS[randomIndex];
 }
 
-// function getPlayerChoice() {
-//   input = prompt("Choose either rock, paper or scissors");
-//   if (input) {
-//     return input.toLowerCase();
-//   } else {
-//     return "";
-//   }
-// }
-
 function isDraw(computerSelection, playerSelection) {
   return computerSelection === playerSelection;
 }
@@ -52,7 +47,7 @@ function getWinner(computerSelection, playerSelection) {
 }
 
 function printScores(computerScore, playerScore) {
-  console.log(`${playerScore} - player, ${computerScore} - PC`);
+  score.textContent = `${playerScore} - player, ${computerScore} - PC`;
 }
 
 function playRound(playerSelection) {
@@ -61,19 +56,21 @@ function playRound(playerSelection) {
   if (POSSIBLE_ACTIONS.includes(playerSelection)) {
     if (isDraw(computerSelection, playerSelection)) {
       outputPara.textContent = "It's a draw!";
-      return null;
     } else if (getWinner(computerSelection, playerSelection) === "player") {
       outputPara.textContent = `You won! ${capitalize(
         playerSelection
       )} beats ${computerSelection}`;
-      return "player";
+      playerScore++;
     } else {
       outputPara.textContent = `You lose! ${capitalize(
         computerSelection
       )} beats ${playerSelection}`;
-      return "computer";
+      computerScore;
     }
   }
+
+  rounds_played++;
+  printScores(computerScore, playerScore);
 }
 
 function announceFinalWinner(computerScore, playerScore) {
@@ -85,23 +82,3 @@ function announceFinalWinner(computerScore, playerScore) {
     console.log("Player won this game!");
   }
 }
-
-// function game() {
-//   let playerScore = (computerScore = 0);
-
-//   for (let i = 0; i < 5; i++) {
-//     let winner = playRound();
-
-//     if (winner !== null) {
-//       if (winner === "player") {
-//         playerScore++;
-//       } else {
-//         computerScore++;
-//       }
-//     }
-
-//     printScores(computerScore, playerScore);
-//   }
-
-//   announceFinalWinner(computerScore, playerScore);
-// }
