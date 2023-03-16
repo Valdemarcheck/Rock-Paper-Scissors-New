@@ -1,5 +1,7 @@
 const POSSIBLE_ACTIONS = ["rock", "paper", "scissors"];
+
 const buttons = document.querySelectorAll(".button");
+const outputPara = document.querySelector(".output");
 
 buttons.forEach((button) =>
   button.addEventListener("click", getPlayerChoice, true)
@@ -58,24 +60,19 @@ function playRound(playerSelection) {
 
   if (POSSIBLE_ACTIONS.includes(playerSelection)) {
     if (isDraw(computerSelection, playerSelection)) {
-      console.log("It's a draw!");
+      outputPara.textContent = "It's a draw!";
       return null;
     } else if (getWinner(computerSelection, playerSelection) === "player") {
-      console.log(
-        `You won! ${capitalize(playerSelection)} beats ${computerSelection}`
-      );
+      outputPara.textContent = `You won! ${capitalize(
+        playerSelection
+      )} beats ${computerSelection}`;
       return "player";
     } else {
-      console.log(
-        `You lose! ${capitalize(computerSelection)} beats ${playerSelection}`
-      );
+      outputPara.textContent = `You lose! ${capitalize(
+        computerSelection
+      )} beats ${playerSelection}`;
       return "computer";
     }
-  } else {
-    console.log(
-      "You've entered an unknown action. Please input either rock, paper or scissors"
-    );
-    return null;
   }
 }
 
