@@ -4,13 +4,26 @@ const buttons = document.querySelectorAll(".button");
 const outputPara = document.querySelector(".output");
 const score = document.querySelector(".score");
 
-let playerScore = (computerScore = 0);
-let rounds_played = 0;
-let gameHasEnded = false;
+const retryBtn = document.querySelector(".retry-btn");
+retryBtn.addEventListener("click", startNewGame);
+retryBtn.style.display = "none";
+
+let playerScore;
+let computerScore;
+let rounds_played;
+let gameHasEnded;
 
 buttons.forEach((button) =>
   button.addEventListener("click", getPlayerChoice, true)
 );
+
+function startNewGame() {
+  playerScore = computerScore = 0;
+  rounds_played = 0;
+  gameHasEnded = false;
+  score.textContent = "0 - player, 0 - PC";
+  retryBtn.style.display = "none";
+}
 
 function capitalize(string) {
   return string[0].toUpperCase() + string.slice(1);
@@ -84,6 +97,7 @@ function playRound(playerSelection) {
   if (rounds_played === 5) {
     announceFinalWinner();
     gameHasEnded = true;
+    retryBtn.style.display = "block";
   }
 }
 
@@ -96,3 +110,5 @@ function announceFinalWinner() {
     outputPara.textContent = "Player won this game!";
   }
 }
+
+startNewGame();
