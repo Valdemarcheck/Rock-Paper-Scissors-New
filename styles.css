@@ -5,6 +5,10 @@
   font-size: 12px;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 body {
   height: 100vh;
   display: flex;
@@ -13,13 +17,20 @@ body {
 }
 
 body > * {
-    width: 100vw;
+  width: 100vw;
 }
 
-header, footer {
-    height: 100px;
+header,
+footer {
+  height: 100px;
+  background-color: #292931;
+  color: rgb(240, 240, 240);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }
