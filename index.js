@@ -79,24 +79,24 @@ function announceFinalWinner(computerScore, playerScore) {
   }
 }
 
-function game() {
-  let playerScore = (computerScore = 0);
+// function game() {
+//   let playerScore = (computerScore = 0);
 
-  for (let i = 0; i < 5; i++) {
-    let winner = playRound();
+//   for (let i = 0; i < 5; i++) {
+//     let winner = playRound();
 
-    if (winner !== null) {
-      if (winner === "player") {
-        playerScore++;
-      } else {
-        computerScore++;
-      }
-    }
+//     if (winner !== null) {
+//       if (winner === "player") {
+//         playerScore++;
+//       } else {
+//         computerScore++;
+//       }
+//     }
 
-    printScores(computerScore, playerScore);
-  }
+//     printScores(computerScore, playerScore);
+//   }
 
-  announceFinalWinner(computerScore, playerScore);
-}
+//   announceFinalWinner(computerScore, playerScore);
+// }
 
 game();
