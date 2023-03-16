@@ -18,10 +18,9 @@ h2 {
 }
 
 body {
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
 }
 
 body > * {
@@ -40,11 +39,14 @@ footer {
 }
 
 main {
+  min-height: 20rem;
+  padding: 2rem 0;
   flex: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0;
+  gap: 1rem;
 }
 
 main > * {
@@ -60,16 +62,19 @@ h2,
 }
 
 .buttons {
+  width: 100%;
   flex: 1;
+
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .button {
-  min-width: 12rem;
-  width: 16rem;
-  min-height: 70%;
+  min-width: 16rem;
+  min-height: 24rem;
   border-radius: 10px;
   box-shadow: 0 0 10px #292931;
   display: flex;
