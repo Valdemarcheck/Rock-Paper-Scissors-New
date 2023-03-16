@@ -6,6 +6,7 @@ const score = document.querySelector(".score");
 
 let playerScore = (computerScore = 0);
 let rounds_played = 0;
+let gameHasEnded = false;
 
 buttons.forEach((button) =>
   button.addEventListener("click", getPlayerChoice, true)
@@ -16,13 +17,15 @@ function capitalize(string) {
 }
 
 function getPlayerChoice() {
-  let className = this.classList.value;
-  let choice;
+  if (!gameHasEnded) {
+    let className = this.classList.value;
+    let choice;
 
-  if (className === "button") {
-    choice = this.getAttribute("data-action");
-    console.log(choice);
-    playRound(choice);
+    if (className === "button") {
+      choice = this.getAttribute("data-action");
+      console.log(choice);
+      playRound(choice);
+    }
   }
 }
 
@@ -80,6 +83,7 @@ function playRound(playerSelection) {
 
   if (rounds_played === 5) {
     announceFinalWinner();
+    gameHasEnded = true;
   }
 }
 
