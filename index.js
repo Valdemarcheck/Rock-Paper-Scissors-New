@@ -50,35 +50,45 @@ function printScores(computerScore, playerScore) {
   score.textContent = `${playerScore} - player, ${computerScore} - PC`;
 }
 
+function announceRoundWinner(computerSelection, playerSelection) {
+  if (isDraw(computerSelection, playerSelection)) {
+    outputPara.textContent = "It's a draw!";
+  } else if (getWinner(computerSelection, playerSelection) === "player") {
+    outputPara.textContent = `You won! ${capitalize(
+      playerSelection
+    )} beats ${computerSelection}`;
+
+    playerScore++;
+  } else {
+    outputPara.textContent = `You lose! ${capitalize(
+      computerSelection
+    )} beats ${playerSelection}`;
+
+    computerScore++;
+  }
+}
+
 function playRound(playerSelection) {
   let computerSelection = getComputerChoice();
 
   if (POSSIBLE_ACTIONS.includes(playerSelection)) {
-    if (isDraw(computerSelection, playerSelection)) {
-      outputPara.textContent = "It's a draw!";
-    } else if (getWinner(computerSelection, playerSelection) === "player") {
-      outputPara.textContent = `You won! ${capitalize(
-        playerSelection
-      )} beats ${computerSelection}`;
-      playerScore++;
-    } else {
-      outputPara.textContent = `You lose! ${capitalize(
-        computerSelection
-      )} beats ${playerSelection}`;
-      computerScore;
-    }
+    announceRoundWinner(computerSelection, playerSelection);
   }
 
   rounds_played++;
   printScores(computerScore, playerScore);
+
+  if (rounds_played === 5) {
+    announceFinalWinner();
+  }
 }
 
-function announceFinalWinner(computerScore, playerScore) {
+function announceFinalWinner() {
   if (computerScore === playerScore) {
-    console.log("Nobody won this game!");
+    outputPara.textContent = "Nobody won this game!";
   } else if (computerScore > playerScore) {
-    console.log("PC won this game!");
+    outputPara.textContent = "PC won this game!";
   } else {
-    console.log("Player won this game!");
+    outputPara.textContent = "Player won this game!";
   }
 }
