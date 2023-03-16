@@ -3,6 +3,7 @@ const POSSIBLE_ACTIONS = ["rock", "paper", "scissors"];
 const buttons = document.querySelectorAll(".button");
 const outputPara = document.querySelector(".output");
 const score = document.querySelector(".score");
+const round = document.querySelector(".round");
 
 const retryBtn = document.querySelector(".retry-btn");
 retryBtn.addEventListener("click", startNewGame);
@@ -22,6 +23,7 @@ function startNewGame() {
   rounds_played = 0;
   gameHasEnded = false;
   score.textContent = "0 - player, 0 - PC";
+  round.textContent = "Round: 1";
   retryBtn.style.display = "none";
 }
 
@@ -66,6 +68,10 @@ function printScores(computerScore, playerScore) {
   score.textContent = `${playerScore} - player, ${computerScore} - PC`;
 }
 
+function updateRoundCounter() {
+  round.textContent = `Round: ${rounds_played}`;
+}
+
 function announceRoundWinner(computerSelection, playerSelection) {
   if (isDraw(computerSelection, playerSelection)) {
     outputPara.textContent = "It's a draw!";
@@ -92,6 +98,7 @@ function playRound(playerSelection) {
   }
 
   rounds_played++;
+  updateRoundCounter();
   printScores(computerScore, playerScore);
 
   if (computerScore === 5 || playerScore === 5) {
